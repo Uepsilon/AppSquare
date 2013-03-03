@@ -61,5 +61,8 @@ module Appsquare
 
     config.assets.initialize_on_precompile = false
 
+    # Fix for polyfills not beeing precompiled
+    config.assets.precompile += %w( polyfills.js )
+
   end
 end
