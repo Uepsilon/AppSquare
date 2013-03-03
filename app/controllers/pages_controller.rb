@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
 
-  before_filter :authenticate_user!
-  before_filter :load_channel
+  before_filter :authenticate_user!, :except => :imprint
+  before_filter :load_channel, :except => :imprint
 
   def index
 
