@@ -1,3 +1,50 @@
 // Place all the styles related to the pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$red: #E80932;
+
+#pages {
+  height: 700px;
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  #navigation {
+    margin: 10px 0 25px 0;
+    width: 100%;
+    padding: 5px;
+    text-align: center;
+
+    span {
+      text-decoration: none;
+      margin-right: 10px;
+    }
+
+    span.active,
+    span:hover {
+      color: $red;
+      cursor: pointer;
+    }
+  }
+
+  #boxes {
+
+    .box.open {
+      .boxhead {
+        background: asset-url('layout/closed.png', image) no-repeat left center;
+      }
+    }
+
+    .box.closed {
+      .boxhead {
+        background: asset-url('layout/open.png', image) no-repeat left top;
+      }
+    }
+
+    .box {
+      .boxhead:hover {
+        color: $red;
+        cursor: pointer;
+      }
+    }
+  }
+}

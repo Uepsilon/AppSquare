@@ -26,13 +26,13 @@
 @import "application/document";
 @import "application/media_queries"; // Media queries last
 
+@import "pages";
+
 //-----------------------------------------
 // Custom font
 //-----------------------------------------
 @import "http://fonts.googleapis.com/css?family=Audiowide";
 @import "http://fonts.googleapis.com/css?family=Montserrat+Alternates";
-
-
 
 //-----------------------------------------
 // Append includes
@@ -46,6 +46,8 @@ body {
   color: darken(#fff, 10);
   font-family: "Montserrat Alternates", sans-serif;
   font-size: 12px;
+  max-width: 1000px;
+  margin: 0 auto;
 
   background: asset-url('layout/body_bg.png', image) repeat top left;
 
@@ -57,10 +59,18 @@ body {
     color: darken(#fff, 10%);
   }
 
+  .bold {
+    font-weight: bold;
+  }
+
+  .italic {
+    font-style: italic;
+  }
+
   header {
     position: relative;
     margin: 10px;
-    padding: 5px 25px;
+    padding: 10px 25px;
     background: rgba(0,0,0,0.4);
     border: 2px solid #fff;
     border-radius: 10px;
@@ -69,12 +79,16 @@ body {
       font-size: 16px;
       font-weight: bold;
       line-height: 20px;
+      margin: 0;
+      padding: 0;
     }
 
     h2 {
       font-size: 12px;
       font-weight: normal;
       line-height: 20px;
+      margin: 0;
+      padding: 0;
     }
   }
 
@@ -91,14 +105,18 @@ body {
     float: left;
   }
 
+  .right {
+    float: right;
+  }
+
   .clear {
     clear: both;
   }
 
   footer {
-    position: absolute;
-    bottom: 10px;
-    width: 100%;
+    margin-top: 50px;
+    max-width: 1000px;
+    margin: 0 auto;
     text-align: center;
 
     font-size: 11px;

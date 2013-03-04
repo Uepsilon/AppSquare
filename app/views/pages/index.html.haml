@@ -1,4 +1,2 @@
-%h1 Hello World1
-
-.channel
-  = @channel
+#pages
+    = render :partial => "pages/snippets/#{@channel}" rescue render :partial => "pages/snippets/default"
