@@ -1,0 +1,9 @@
+de:
+  activerecord:
+    models:
+      user: Benutzer
+    attributes:
+      user:
+        username: Benutzername
+        password: Passwort
+        remember_me: Eingeloggt bleiben
