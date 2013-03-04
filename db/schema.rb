@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(:version => 20130303001521) do
     t.datetime "updated_at",                          :null => false
   end
 
-  add_index "users", ["channel"], :name => "index_users_on_channel", :unique => true
+  add_index "users", ["channel"], :name => "index_users_on_channel"
   add_index "users", ["username"], :name => "index_users_on_username", :unique => true
 
 end
