@@ -10,6 +10,6 @@ class PagesController < ApplicationController
   protected
 
   def load_channel
-    @channel = current_user.channel unless current_user.channel.empty?
+    @channel = current_user.channel unless current_user.channel.nil?
   end
 end
