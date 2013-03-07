@@ -6,10 +6,17 @@ This litte Application was created to present informations about myself. Basical
 
 ### Creating an private area
 
-* To create an private area for a special account, just set the `channel` to whatever you like (e.g. bonsai-kittens).
-* Now create a snippet called `_bonsai-kittens.html.haml` (or whatever you called the channel) and insert the data you like.
-* You can even add a file to download by renaming it to `bonsai-kittens.pdf`, placing it to "shared/files/" and adding a link to your snippet:
+1. Generate User with `channel` of choice. (e.g. bonsai-kittens). The name and password is what the one should receive who should be able to view that specific data.
+
+        User.create :username => "Duck-Norris", :password => "whateveritshouldbe", :channel => "bonsai-kittens"
+
+2. Create a snippet:
+  * Create new file in `app/views/pages/snippets`
+  * Name it `_CHANNELNAME.html.haml` (e.g. `_bonsai-kittens.html.haml`)
+  * Add content for the created user
+
+3. (Optional) Generate a pdf-File with specific content for that user. Place it in `shared/files` and name it `CHANNEL.pdf` (e.g. `bonsai-kittens.pdf`). Then add this link to the generated snippet.
 
         = link_to "Click here to Download", :download
 
-The User who logs in with that specific account will now see the content of that special snippet and can download that file. Anybody else will still see the default data. And even if they try to download that file (via calling /download manually), they won't be able due to the channel-attribute.
+The User who logs in with that specific account will now see the content of that snippet (and can download that file if you created one and added the link). Anybody else will still see the default data (and will not be able to download the pdf. And even if they try to download that file (via calling /download manually), they won't be able due to the channel-attribute.)

@@ -1,8 +1,6 @@
 require 'spec_helper'
 
 describe DeviseController do
-  include Devise::TestHelpers
-
   describe "GET page from pages controller" do
     it "has current_user if logged in" do
       login_user
