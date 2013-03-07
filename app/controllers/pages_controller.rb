@@ -1,15 +1,22 @@
 class PagesController < ApplicationController
 
   before_filter :authenticate_user!, :except => :imprint
-  before_filter :load_channel, :except => :imprint
 
   def index
 
   end
 
-  protected
+  def download
+    file_path = Rails.root + "shared" + "files" + "#{current_user.channel}.pdf"
 
-  def load_channel
-    @channel = current_user.channel unless current_user.channel.nil?
+    if File.exists? file_path
+      send_file(file_path,
+                :filename       =>  "Filename.pdf",
+                :type           =>  'application/pdf',
+                :disposition    =>  'attachment')
+    else
+      flash[:alert] = "Datei wurde nicht gefunden"
+      redirect_to :root
+    end
   end
 end

@@ -1,2 +1,2 @@
 #pages
-    = render :partial => "pages/snippets/#{@channel}" rescue render :partial => "pages/snippets/default"
+    = render :partial => "pages/snippets/#{current_user.channel}" rescue render :partial => "pages/snippets/default"

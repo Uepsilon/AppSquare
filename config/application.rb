@@ -64,5 +64,9 @@ module Appsquare
     # Fix for polyfills not beeing precompiled
     config.assets.precompile += %w( polyfills.js )
 
+    config.generators do |g|
+        g.fixture_replacement :factory_girl
+    end
+
   end
 end
