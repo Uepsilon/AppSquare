@@ -10,7 +10,7 @@ class PagesController < ApplicationController
     file_name = "Unterlagen.pdf"
     file_name = current_user.filename unless current_user.filename.empty?
 
-    file_path = Rails.root + "shared" + "files" + file_name
+    file_path = Rails.root + "shared" + "files" + "#{current_user.channel}.pdf"
 
     if File.exists? file_path
       send_file(file_path,
