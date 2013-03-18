@@ -7,11 +7,14 @@ class PagesController < ApplicationController
   end
 
   def download
-    file_path = Rails.root + "shared" + "files" + "#{current_user.channel}.pdf"
+    file_name = "Unterlagen.pdf"
+    file_name = current_user.filename unless current_user.filename.empty?
+
+    file_path = Rails.root + "shared" + "files" + file_name
 
     if File.exists? file_path
       send_file(file_path,
-                :filename       =>  "Filename.pdf",
+                :filename       =>  file_name,
                 :type           =>  'application/pdf',
                 :disposition    =>  'attachment')
     else

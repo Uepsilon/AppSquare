@@ -2,6 +2,7 @@ FactoryGirl.define do
   factory :user do
     username 'Duck Norris'
     password 'randomPassword123'
+    filename 'duck_norris.pdf'
 
     trait :valid_channel do
       channel 'mychannel'

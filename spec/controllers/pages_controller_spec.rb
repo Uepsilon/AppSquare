@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'ruby-debug'
 
 describe PagesController do
   render_views
@@ -25,7 +26,7 @@ describe PagesController do
     end
 
     it "shows default content if content for userchannel is not available" do
-      login_user_with_invalid_channel
+      login_user_with_invalid_channel_and_filename
       get 'index'
 
       response.should_not render_template(:partial => subject.current_user.channel)
@@ -34,6 +35,12 @@ describe PagesController do
   end
 
   describe "GET download" do
+    let(:send_file_params) {{
+                              filename: "duck_norris.pdf",
+                              type: 'application/pdf',
+                              disposition: 'attachment'
+                            }}
+
     it "redirects to login page if not logged in" do
       get 'download'
 
@@ -48,8 +55,17 @@ describe PagesController do
       get 'download'
     end
 
-    it "prints an error if file with name according to userchannel does not exist" do
-      login_user_with_invalid_channel
+    it "should use the filename stored in the user if filename exists" do
+      login_user
+
+      controller.stub(:render)
+      controller.should_receive(:send_file).with(kind_of(Pathname), send_file_params)
+
+      get 'download'
+    end
+
+    it "prints an error if file with name according to user filename does not exist" do
+      login_user_with_invalid_channel_and_filename
       get 'download'
 
       response.should redirect_to(:root)
